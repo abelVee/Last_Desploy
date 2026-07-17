@@ -1,0 +1,32 @@
+/* Escenario.css */
+.escenario-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.escenario-fondo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Grilla de la "oficina": 4 columnas x 2 filas, superpuesta al fondo */
+.oficina-grid {
+  position: absolute;
+  inset: 8% 4% 4% 4%; /* ajusta estos márgenes según tu escenario.png */
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: end; /* todos "parados" sobre la misma línea de piso */
+
+  pointer-events: none; /* que no bloqueen clics sobre el fondo */
+}
+
+.puesto {
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+}

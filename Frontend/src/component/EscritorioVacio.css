@@ -1,0 +1,49 @@
+.programador-escena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.programador-sprite {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pixel {
+  width: 100%;
+  height: 100%;
+}
+
+/* Pantalla en reposo: brillo tenue tipo protector de pantalla */
+.pixel--pantalla {
+  animation: parpadeo-monitor-vacio 3.6s ease-in-out infinite;
+}
+
+@keyframes parpadeo-monitor-vacio {
+  0%,
+  88%,
+  100% {
+    filter: brightness(0.9);
+  }
+  92% {
+    filter: brightness(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pixel--pantalla {
+    animation: none;
+  }
+}
