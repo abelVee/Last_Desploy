@@ -1,0 +1,177 @@
+.personaje-escena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.personaje-sprite {
+  /* --- Mobiliario: igual para todos los personajes --- */
+  --c-escritorio: #6b3c1e;
+  --c-escritorio-sombra: #4b2d1e;
+  --c-monitor: #5e5e5e;
+  --c-monitor-sombra: #3f3f3f;
+  --c-silla: #3a3a44;
+  --c-silla-sombra: #242430;
+
+  /* --- Colores del personaje: estos son los valores por defecto
+     (variante "senior"). Cada .personaje--variante de más abajo
+     pisa solo lo que necesita. --- */
+  --c-pelo: #ddd0dd;
+  --c-piel: #e3b696;
+  --c-barba: #b8a8b0;
+  --c-camiseta: #4aa855;
+  --c-camiseta-sombra: #2f7a41;
+  --c-pantalon: #8a2828;
+  --c-pantalon-sombra: #591515;
+  --c-zapatos: #8a5a35;
+
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  /* aísla el layout/paint/estilo de este sprite del resto de la página */
+  contain: layout style paint;
+}
+
+/* ============ VARIANTES: solo colores, ningún cambio de forma ============ */
+
+.personaje--joven {
+  --c-pelo: #4a3524;
+  --c-piel: #e8b98d;
+  --c-barba: #e8b98d; /* sin barba: se funde con la piel */
+  --c-camiseta: #3a6ea5;
+  --c-camiseta-sombra: #2a4f78;
+  --c-pantalon: #55606b;
+  --c-pantalon-sombra: #3a434c;
+  --c-zapatos: #6b4a2e;
+}
+
+.personaje--morenito {
+  --c-pelo: #14100e;
+  --c-piel: #9c6a48;
+  --c-barba: #6b4530;
+  --c-camiseta: #c98a2e;
+  --c-camiseta-sombra: #9c6a1e;
+  --c-pantalon: #2e3a52;
+  --c-pantalon-sombra: #1e2740;
+  --c-zapatos: #4a3018;
+}
+
+.personaje--mujer-rubia {
+  --c-pelo: #f6dd6e;
+  --c-piel: #f3cfae;
+  --c-barba: #f6dd6e; /* mismo tono que el pelo: lo enmarca en vez de barba */
+  --c-camiseta: #c9558f;
+  --c-camiseta-sombra: #963d68;
+  --c-pantalon: #463659;
+  --c-pantalon-sombra: #2f253c;
+  --c-zapatos: #8a5a35;
+}
+
+.personaje--encapuchado {
+  --c-pelo: #5a2438; /* capucha */
+  --c-piel: #c9926e;
+  --c-barba: #1a1216; /* sombra profunda bajo la capucha */
+  --c-camiseta: #5a2438; /* mismo tono que la capucha: un solo hoodie */
+  --c-camiseta-sombra: #3d1826;
+  --c-pantalon: #23262b;
+  --c-pantalon-sombra: #16181c;
+  --c-zapatos: #4a4d55;
+}
+
+/* ============ Píxeles y animaciones (iguales para todos) ============ */
+
+.pixel {
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+/* --- Respiración: cuerpo y cabeza suben/bajan sutilmente --- */
+.pixel--cuerpo {
+  animation: respirar 3.4s ease-in-out infinite;
+}
+
+.pixel--cuerpo.pixel--cabeza {
+  animation-name: respirar-cabeza;
+  animation-duration: 3.4s;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.4%);
+  }
+}
+
+@keyframes respirar-cabeza {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-2.2%);
+  }
+  55% {
+    transform: translateY(-2.2%);
+  }
+}
+
+/* --- Parpadeo de ojos --- */
+.pixel--ojo {
+  animation: parpadeo-ojo 4.2s ease-in-out infinite;
+}
+
+@keyframes parpadeo-ojo {
+  0%,
+  92%,
+  100% {
+    filter: none;
+  }
+  95% {
+    filter: brightness(0.25);
+    transform: scaleY(0.35);
+  }
+}
+
+/* --- Pantalla del monitor: un solo overlay animado por opacity --- */
+.pantalla-brillo {
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  animation: brillo-pantalla 2.6s ease-in-out infinite;
+}
+
+@keyframes brillo-pantalla {
+  0%,
+  85%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantalla-brillo,
+  .pixel--cuerpo,
+  .pixel--cuerpo.pixel--cabeza,
+  .pixel--ojo {
+    animation: none;
+  }
+}
+

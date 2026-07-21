@@ -1,0 +1,49 @@
+.reloj-pared-escena {
+  position: absolute;
+  left: 61.88%;
+  top: 13.55%;
+  width: 9.08%;
+  pointer-events: none;
+}
+
+.reloj-pared-sprite {
+  display: grid;
+  width: 100%;
+}
+
+.reloj-pared-sprite .pixel {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contenedor de la manecilla: se posiciona con el borde izquierdo
+   exactamente en el centro de la esfera (col 9.5 de 20, fila 9.5 de 20) */
+.reloj-pared-manecilla {
+  position: absolute;
+  left: 47.5%;
+  top: 42.5%;
+  width: 25%;
+  height: 10%;
+  transform-origin: 0% 50%; /* el pivote queda en el borde izquierdo, altura media */
+  animation: girar-manecilla 20s linear infinite;
+}
+
+.reloj-pared-manecilla-sprite {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.reloj-pared-manecilla-sprite .pixel {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes girar-manecilla {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

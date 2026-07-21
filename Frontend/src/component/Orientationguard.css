@@ -1,0 +1,48 @@
+.orientation-guard-overlay {
+  display: none; /* oculto por defecto (desktop, tablets, landscape) */
+}
+
+.orientation-guard-contenido {
+  display: block;
+}
+
+/* Solo en pantallas de celular Y en vertical mostramos el aviso.
+   El "and (max-width: 768px)" evita que se active en tablets/desktop
+   angostos donde el usuario simplemente achicó la ventana. */
+@media (orientation: portrait) and (max-width: 768px) {
+  .orientation-guard-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: #14140f;
+    color: #f2f0eb;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .orientation-guard-icono {
+    font-size: 3rem;
+    animation: girar-icono 1.6s ease-in-out infinite;
+  }
+
+  .orientation-guard-contenido {
+    display: none; /* escondemos la app mientras esté en vertical */
+  }
+}
+
+@keyframes girar-icono {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+}

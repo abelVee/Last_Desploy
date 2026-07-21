@@ -4,12 +4,35 @@
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  overflow: hidden; /* nada puede desbordar y "tapar" el resto */
 }
 
 .escenario-fondo {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Puerta de salida superpuesta sobre el fondo.
+   El ajuste que antes hacía "transform: translate(1px, -16px)" (en px fijos,
+   por lo tanto NO responsive) quedó absorbido directamente en el top/left en %,
+   así escala igual en cualquier tamaño de pantalla. */
+.escenario-puerta {
+  position: absolute;
+  left: 0%;
+  top: 9.31%;
+  width: 16.63%;
+  height: auto;
+  pointer-events: none; /* que no bloquee clics sobre el fondo */
+}
+
+/* Contenedor de todos los objetos decorativos (ventana, corcho, reloj, etc.) */
+.objetos-decorativos {
+  position: absolute;
+  inset: 0;
+  transform: scale(0.75) translate(5%, 3%);
+  transform-origin: top left;
+  pointer-events: none;
 }
 
 /* Grilla de la "oficina": 4 columnas x 2 filas, superpuesta al fondo */
@@ -19,8 +42,10 @@
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  align-items: end; /* todos "parados" sobre la misma línea de piso */
+  grid-template-rows: repeat(2, auto); /* cada fila mide solo lo que ocupa el personaje */
+  align-content: center; /* el bloque de las 2 filas queda centrado en el área */
+  row-gap: 1rem; /* <-- ACÁ controlás el espacio entre la fila de arriba y la de abajo */
+  column-gap: 0.5rem;
 
   pointer-events: none; /* que no bloqueen clics sobre el fondo */
 }
@@ -29,4 +54,35 @@
   width: 100%;
   max-width: 150px;
   margin: 0 auto;
+  contain: layout style paint;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Tablets / pantallas medianas: reducimos un poco el gap y el tope de tamaño
+   de cada puesto para que no se vea todo demasiado separado */
+@media (max-width: 768px) {
+  .oficina-grid {
+    row-gap: 0.6rem;
+    column-gap: 0.35rem;
+  }
+
+  .puesto {
+    max-width: 110px;
+  }
+}
+
+/* Celulares: 4 columnas quedan muy angostas para que se lea algo,
+   así que pasamos a 2 columnas x 4 filas */
+@media (max-width: 480px) {
+  .oficina-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    row-gap: 0.4rem;
+    column-gap: 0.3rem;
+  }
+
+  .puesto {
+    max-width: 130px;
+  }
 }

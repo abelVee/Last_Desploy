@@ -1,0 +1,160 @@
+.programadora-escena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.programadora-sprite {
+  /* --- Mobiliario --- */
+  --c-escritorio: #6b3c1e;
+  --c-escritorio-sombra: #4b2d1e;
+  --c-monitor: #5e5e5e;
+  --c-monitor-sombra: #3f3f3f;
+  --c-silla: #3a3a44;
+  --c-silla-sombra: #242430;
+
+  /* --- Colores del personaje: valores por defecto --- */
+  --c-pelo: #e8853a;
+  --c-piel: #f3cfae;
+  --c-ojos: #4a9c4a;
+  --c-boca: #5c3a2e;
+  --c-sweater: #9b3fa0;
+  --c-sweater-sombra: #7a2f80;
+  --c-pantalon: #463659;
+  --c-pantalon-sombra: #2f253c;
+  --c-zapatos: #8a5a35;
+
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  contain: layout style paint;
+}
+
+/* ============ VARIANTES: solo colores, ningún cambio de forma ============ */
+
+.programadora--rubia {
+  --c-pelo: #f6dd6e;
+  --c-piel: #f3cfae;
+  --c-ojos: #4a80c2;
+  --c-sweater: #c9558f;
+  --c-sweater-sombra: #963d68;
+  --c-pantalon: #463659;
+  --c-pantalon-sombra: #2f253c;
+  --c-zapatos: #8a5a35;
+}
+
+.programadora--morena {
+  --c-pelo: #14100e;
+  --c-piel: #9c6a48;
+  --c-ojos: #4a2c1a;
+  --c-sweater: #c98a2e;
+  --c-sweater-sombra: #9c6a1e;
+  --c-pantalon: #2e3a52;
+  --c-pantalon-sombra: #1e2740;
+  --c-zapatos: #4a3018;
+}
+
+.programadora--azul {
+  --c-pelo: #2c4a7a;
+  --c-piel: #e8b98d;
+  --c-ojos: #d9a441;
+  --c-sweater: #3a6ea5;
+  --c-sweater-sombra: #2a4f78;
+  --c-pantalon: #55606b;
+  --c-pantalon-sombra: #3a434c;
+  --c-zapatos: #6b4a2e;
+}
+
+/* ============ Píxeles y animaciones ============ */
+
+.pixel {
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+.pixel--cuerpo {
+  animation: respirar 3.4s ease-in-out infinite;
+}
+
+.pixel--cuerpo.pixel--cabeza {
+  animation-name: respirar-cabeza;
+  animation-duration: 3.4s;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.4%);
+  }
+}
+
+@keyframes respirar-cabeza {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-2.2%);
+  }
+  55% {
+    transform: translateY(-2.2%);
+  }
+}
+
+.pixel--ojo {
+  animation: parpadeo-ojo 4.2s ease-in-out infinite;
+}
+
+@keyframes parpadeo-ojo {
+  0%,
+  92%,
+  100% {
+    filter: none;
+  }
+  95% {
+    filter: brightness(0.25);
+    transform: scaleY(0.35);
+  }
+}
+
+.pantalla-brillo {
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  animation: brillo-pantalla 2.6s ease-in-out infinite;
+}
+
+@keyframes brillo-pantalla {
+  0%,
+  85%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantalla-brillo,
+  .pixel--cuerpo,
+  .pixel--cuerpo.pixel--cabeza,
+  .pixel--ojo {
+    animation: none;
+  }
+}

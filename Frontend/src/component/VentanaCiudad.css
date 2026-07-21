@@ -1,0 +1,55 @@
+.ventana-ciudad-escena {
+  position: absolute;
+  left: 38.84%;
+  top: 8.67%;
+  width: 20.06%;
+  pointer-events: none;
+}
+
+.ventana-ciudad-sprite {
+  display: grid;
+  width: 100%;
+}
+
+.ventana-ciudad-sprite .pixel {
+  width: 100%;
+  height: 100%;
+}
+
+/* Cielo: cambia de tono lentamente, como si pasara el tiempo del día */
+.pixel--cielo {
+  animation: ciclo-cielo 16s ease-in-out infinite;
+}
+
+@keyframes ciclo-cielo {
+  0% {
+    background-color: #7d6a8c; /* atardecer violeta */
+  }
+  35% {
+    background-color: #4b3b63; /* noche */
+  }
+  65% {
+    background-color: #c98f7a; /* amanecer cálido */
+  }
+  100% {
+    background-color: #7d6a8c;
+  }
+}
+
+/* Sol / luna: brillo pulsante */
+.pixel--sol {
+  background-color: #e0a86a;
+  animation: brillo-sol 3s ease-in-out infinite;
+}
+
+@keyframes brillo-sol {
+  0%,
+  100% {
+    background-color: #e0a86a;
+    box-shadow: 0 0 2px 1px rgba(224, 168, 106, 0.4);
+  }
+  50% {
+    background-color: #f4cf9c;
+    box-shadow: 0 0 4px 2px rgba(244, 207, 156, 0.8);
+  }
+}

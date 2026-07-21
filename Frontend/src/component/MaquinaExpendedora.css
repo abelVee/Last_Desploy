@@ -1,0 +1,17 @@
+.maquina-expendedora-escena {
+  position: absolute;
+  left:104.17%;
+  top: 18.05%;
+  width: 12.65%;
+  pointer-events: none;
+}
+
+.maquina-expendedora-sprite {
+  display: grid;
+  width: 100%;
+}
+
+.maquina-expendedora-sprite .pixel {
+  width: 100%;
+  height: 100%;
+}

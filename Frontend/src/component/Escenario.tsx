@@ -1,12 +1,16 @@
 // Escenario.tsx
-import ProgramadorSenior from "./ProgramadorSenior";
-import Joven from "./Joven";
-import Morenito from "./Moreno";
-import MujerRubia from "./MujerRubia";
-import Encapuchado from "./Encapuchado";
-import EscritorioVacio from "./EscritorioVacio";
+import Personaje from "./Personaje";
 import fondoEscenario from "../assets/escenario.png";
 import "./Escenario.css";
+import PuertaSalida from "../assets/puerta_salida.png";
+import EscritorioVacio from "./EscritorioVacio";
+import VentanaCiudad from "./VentanaCiudad";
+import TeamWins from "./TeamWins";
+import MaquinaExpendedora from "./MaquinaExpendedora";
+import RelojPared from "./RelojPared";
+import MesaPlanta from "./MesaPlanta";
+import SprintBoard from "./Sprintboard";
+import Programadora from "./Programadora";
 
 const Escenario = () => {
   return (
@@ -18,31 +22,48 @@ const Escenario = () => {
         className="escenario-fondo"
       />
 
-      {/* Capa de personajes y escritorios, en grilla de 4 columnas x 2 filas */}
+      {/* Objetos superpuestos sobre el fondo */}
+      <img
+        src={PuertaSalida}
+        alt="Puerta de salida"
+        className="escenario-puerta"
+      />
+
+      <div className="objetos-decorativos">
+        <VentanaCiudad />
+        <TeamWins />
+        <MaquinaExpendedora />
+        <RelojPared />
+        <MesaPlanta />
+        <SprintBoard />
+      </div>
+
+      {/* Capa de personajes y escritorios, en grilla de 4 columnas x 2 filas
+          (en mobile pasa a 2 columnas x 4 filas, ver media query en el css) */}
       <div className="oficina-grid">
         {/* Fila de arriba: 4 personajes */}
         <div className="puesto">
-          <ProgramadorSenior />
+          <Personaje />
         </div>
         <div className="puesto">
-          <Joven />
+          <Personaje variante="joven" />
         </div>
         <div className="puesto">
-          <Morenito />
+          <EscritorioVacio />
         </div>
         <div className="puesto">
-          <MujerRubia />
+          <Personaje variante="mujer-rubia" />
         </div>
 
-        {/* Fila de abajo: 1 personaje + 3 escritorios vacíos */}
+        {/* Fila de abajo */}
         <div className="puesto">
-          <Encapuchado />
+          <Personaje variante="encapuchado" />
         </div>
         <div className="puesto">
           <EscritorioVacio />
         </div>
         <div className="puesto">
-          <EscritorioVacio />
+          <Programadora />
         </div>
         <div className="puesto">
           <EscritorioVacio />
