@@ -12,7 +12,7 @@
      vuelta hacia la izquierda, se da vuelta, y repite. El flip de
      scaleX pasa de golpe a mitad de recorrido (no con "alternate",
      que dejaría el sprite espejado al revés durante el regreso). */
-  animation: gato-suelto-caminar 22s linear infinite;
+  animation: gato-suelto-caminar 100s linear infinite;
 }
 
 @keyframes gato-suelto-caminar {
