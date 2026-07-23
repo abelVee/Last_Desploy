@@ -1,0 +1,160 @@
+.gato-suelto-escena {
+  position: absolute;
+  bottom: 6%;
+  left: 4%;
+  width: 8%;
+  max-width: 90px;
+  min-width: 44px;
+  pointer-events: none;
+  z-index: 3;
+
+  /* Recorrido: camina hacia la derecha, se da vuelta, camina de
+     vuelta hacia la izquierda, se da vuelta, y repite. El flip de
+     scaleX pasa de golpe a mitad de recorrido (no con "alternate",
+     que dejaría el sprite espejado al revés durante el regreso). */
+  animation: gato-suelto-caminar 22s linear infinite;
+}
+
+@keyframes gato-suelto-caminar {
+  0% {
+    left: 4%;
+    transform: scaleX(1);
+  }
+  48% {
+    left: 84%;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 84%;
+    transform: scaleX(-1);
+  }
+  98% {
+    left: 4%;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 4%;
+    transform: scaleX(1);
+  }
+}
+
+/* Rebote del andar: siempre activo, independiente de la posición */
+.gato-suelto-caminata {
+  animation: gato-suelto-rebote 0.6s ease-in-out infinite;
+}
+
+@keyframes gato-suelto-rebote {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-6%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-6%);
+  }
+}
+
+.gato-suelto-sprite {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  /* --- Colores por defecto: siamés crema --- */
+  --c-mascara: #4a3527;
+  --c-pelaje: #d9c9ae;
+  --c-pelaje-sombra: #c2ae8e;
+  --c-ojos: #a8b8d9;
+  --c-nariz: #2a1c14;
+  --c-collar: #a8342a;
+  --c-placa: #e0b83a;
+  --c-placa-sombra: #8a7020;
+}
+
+.gs-pixel {
+  width: 100%;
+  height: 100%;
+}
+
+.gs-pixel--ojo {
+  animation: gato-suelto-parpadeo 4.5s ease-in-out infinite;
+}
+
+@keyframes gato-suelto-parpadeo {
+  0%,
+  92%,
+  100% {
+    filter: none;
+    transform: scaleY(1);
+  }
+  95% {
+    filter: brightness(0.3);
+    transform: scaleY(0.2);
+  }
+}
+
+/* Cola: sub-grid propio que se mece como una sola pieza, pivoteando
+   desde la esquina donde se une al cuerpo (abajo a la derecha) */
+.gs-cola {
+  display: grid;
+  transform-origin: 100% 100%;
+  animation: gato-suelto-cola 1.3s ease-in-out infinite;
+}
+
+@keyframes gato-suelto-cola {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* ============ VARIANTES: solo color ============ */
+
+.gato-suelto--gris .gato-suelto-sprite {
+  --c-mascara: #4a4a4a;
+  --c-pelaje: #c9c9ca;
+  --c-pelaje-sombra: #adadae;
+  --c-ojos: #8fae5a;
+  --c-collar: #3a6ea5;
+  --c-placa: #d9d9d9;
+  --c-placa-sombra: #a0a0a0;
+}
+
+.gato-suelto--naranja .gato-suelto-sprite {
+  --c-mascara: #b5651d;
+  --c-pelaje: #f0d9a8;
+  --c-pelaje-sombra: #d9bd85;
+  --c-ojos: #4a9c5c;
+  --c-collar: #4a6ea5;
+  --c-placa: #e0b83a;
+  --c-placa-sombra: #8a7020;
+}
+
+.gato-suelto--negro .gato-suelto-sprite {
+  --c-mascara: #1a1614;
+  --c-pelaje: #2f2a26;
+  --c-pelaje-sombra: #1f1b18;
+  --c-ojos: #d9a441;
+  --c-collar: #963d68;
+  --c-placa: #e0b83a;
+  --c-placa-sombra: #8a7020;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gato-suelto-escena,
+  .gato-suelto-caminata,
+  .gs-cola,
+  .gs-pixel--ojo {
+    animation: none;
+  }
+}

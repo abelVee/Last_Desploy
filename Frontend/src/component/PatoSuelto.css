@@ -1,0 +1,92 @@
+.pato-suelto-escena {
+  position: absolute;
+  bottom: 4%;
+  left: 8%;
+  width: 5%;
+  max-width: 60px;
+  min-width: 30px;
+  pointer-events: none;
+  z-index: 3;
+
+  /* Recorrido: camina hacia la derecha, se da vuelta, camina de
+     vuelta, se da vuelta, y repite. Duración distinta a la del gato
+     suelto para que no queden sincronizados. */
+  animation: pato-suelto-caminar 26s linear infinite;
+}
+
+@keyframes pato-suelto-caminar {
+  0% {
+    left: 8%;
+    transform: scaleX(1);
+  }
+  48% {
+    left: 78%;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 78%;
+    transform: scaleX(-1);
+  }
+  98% {
+    left: 8%;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 8%;
+    transform: scaleX(1);
+  }
+}
+
+/* Anadeo: bamboleo de lado a lado + rebotecito, siempre activo */
+.pato-suelto-anadeo {
+  animation: pato-suelto-bamboleo 0.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes pato-suelto-bamboleo {
+  0%,
+  100% {
+    transform: rotate(-7deg) translateY(0);
+  }
+  50% {
+    transform: rotate(7deg) translateY(-6%);
+  }
+}
+
+.pato-suelto-sprite {
+  display: grid;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  --c-plumaje: #f2d43a;
+  --c-ojos: #2a1c10;
+  --c-pico: #e07a1f;
+}
+
+.ps-pixel {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ VARIANTES: solo color ============ */
+
+.pato-suelto--blanco .pato-suelto-sprite {
+  --c-plumaje: #f4f1ea;
+  --c-ojos: #2a1c10;
+  --c-pico: #e07a1f;
+}
+
+.pato-suelto--pardo .pato-suelto-sprite {
+  --c-plumaje: #8a6a3d;
+  --c-ojos: #1a120a;
+  --c-pico: #d9822f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pato-suelto-escena,
+  .pato-suelto-anadeo {
+    animation: none;
+  }
+}

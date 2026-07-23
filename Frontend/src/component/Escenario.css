@@ -38,7 +38,7 @@
 /* Grilla de la "oficina": 4 columnas x 2 filas, superpuesta al fondo */
 .oficina-grid {
   position: absolute;
-  inset: 8% 4% 4% 4%; /* ajusta estos márgenes según tu escenario.png */
+  inset: 30% 4% 4% 4%; /* ajusta estos márgenes según tu escenario.png */
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);

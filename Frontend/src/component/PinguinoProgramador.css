@@ -1,0 +1,149 @@
+.pinguino-escena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.pinguino-sprite {
+  /* --- Mobiliario --- */
+  --c-escritorio: #6b3c1e;
+  --c-escritorio-sombra: #4b2d1e;
+  --c-monitor: #5e5e5e;
+  --c-monitor-sombra: #3f3f3f;
+  --c-silla: #3a3a44;
+  --c-silla-sombra: #242430;
+
+  /* --- Colores del pingüino: valores por defecto --- */
+  --c-plumaje: #1c1f26;
+  --c-plumaje-sombra: #12141a;
+  --c-pancita: #f4f1ea;
+  --c-ojos: #0e0e10;
+  --c-pico: #e0812f;
+  --c-hoodie: #3a6ea5;
+  --c-hoodie-sombra: #2a4f78;
+
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  contain: layout style paint;
+}
+
+/* ============ VARIANTES: solo colores, ningún cambio de forma ============ */
+
+.pinguino--rey {
+  --c-plumaje: #2b2b33;
+  --c-pancita: #f6e7c9;
+  --c-pico: #e8a23f;
+  --c-hoodie: #963d68;
+  --c-hoodie-sombra: #6e2c4c;
+}
+
+.pinguino--bebe {
+  --c-plumaje: #7a828f;
+  --c-pancita: #f4f1ea;
+  --c-pico: #d98a4a;
+  --c-hoodie: #4aa855;
+  --c-hoodie-sombra: #2f7a41;
+}
+
+.pinguino--polar {
+  --c-plumaje: #3c4650;
+  --c-pancita: #ffffff;
+  --c-pico: #f2a63f;
+  --c-hoodie: #c9558f;
+  --c-hoodie-sombra: #963d68;
+}
+
+/* ============ Píxeles y animaciones ============ */
+
+.pixel {
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+.pixel--cuerpo {
+  animation: respirar 3.4s ease-in-out infinite;
+}
+
+.pixel--cuerpo.pixel--cabeza {
+  animation-name: respirar-cabeza;
+  animation-duration: 3.4s;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.4%);
+  }
+}
+
+@keyframes respirar-cabeza {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-2.2%);
+  }
+  55% {
+    transform: translateY(-2.2%);
+  }
+}
+
+.pixel--ojo {
+  animation: parpadeo-ojo 4.2s ease-in-out infinite;
+}
+
+@keyframes parpadeo-ojo {
+  0%,
+  92%,
+  100% {
+    filter: none;
+  }
+  95% {
+    filter: brightness(0.25);
+    transform: scaleY(0.35);
+  }
+}
+
+.pantalla-brillo {
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  animation: brillo-pantalla 2.6s ease-in-out infinite;
+}
+
+@keyframes brillo-pantalla {
+  0%,
+  85%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantalla-brillo,
+  .pixel--cuerpo,
+  .pixel--cuerpo.pixel--cabeza,
+  .pixel--ojo {
+    animation: none;
+  }
+}

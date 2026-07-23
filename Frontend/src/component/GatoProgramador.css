@@ -1,0 +1,163 @@
+.gato-escena {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.gato-sprite {
+  /* --- Mobiliario --- */
+  --c-escritorio: #6b3c1e;
+  --c-escritorio-sombra: #4b2d1e;
+  --c-monitor: #5e5e5e;
+  --c-monitor-sombra: #3f3f3f;
+  --c-silla: #3a3a44;
+  --c-silla-sombra: #242430;
+
+  /* --- Colores del gato: pelaje café por defecto --- */
+  --c-pelaje: #6b4226;
+  --c-cara: #d9b48c;
+  --c-ojos: #3f9c5c;
+  --c-boca: #4a2c1a;
+  --c-nariz: #d98a8a;
+  --c-bigotes: #f0e6d8;
+  --c-hoodie: #3a6ea5;
+  --c-hoodie-sombra: #2a4f78;
+  --c-patas: #6b4226;
+  --c-patas-sombra: #4a2e19;
+  --c-garras: #3a2415;
+
+  display: grid;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  background-color: transparent !important;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  contain: layout style paint;
+}
+
+/* ============ VARIANTES: solo colores, ningún cambio de forma ============ */
+
+.gato--naranja {
+  --c-pelaje: #e8863f;
+  --c-cara: #fff3e0;
+  --c-ojos: #3f9c5c;
+  --c-hoodie: #3a6ea5;
+  --c-hoodie-sombra: #2a4f78;
+  --c-patas: #e8863f;
+  --c-patas-sombra: #c96f2f;
+  --c-garras: #5c3a2e;
+}
+
+.gato--negro {
+  --c-pelaje: #22201f;
+  --c-cara: #4a4340;
+  --c-ojos: #d9a441;
+  --c-bigotes: #e8e0d5;
+  --c-hoodie: #963d68;
+  --c-hoodie-sombra: #6e2c4c;
+  --c-patas: #22201f;
+  --c-patas-sombra: #14100e;
+  --c-garras: #1a1614;
+}
+
+.gato--gris {
+  --c-pelaje: #8b8f96;
+  --c-cara: #d8dadd;
+  --c-ojos: #4a80c2;
+  --c-hoodie: #4aa855;
+  --c-hoodie-sombra: #2f7a41;
+  --c-patas: #8b8f96;
+  --c-patas-sombra: #63666c;
+  --c-garras: #4a4d52;
+}
+
+/* ============ Píxeles y animaciones ============ */
+
+.pixel {
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+}
+
+.pixel--cuerpo {
+  animation: respirar 3.4s ease-in-out infinite;
+}
+
+.pixel--cuerpo.pixel--cabeza {
+  animation-name: respirar-cabeza;
+  animation-duration: 3.4s;
+}
+
+@keyframes respirar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.4%);
+  }
+}
+
+@keyframes respirar-cabeza {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-2.2%);
+  }
+  55% {
+    transform: translateY(-2.2%);
+  }
+}
+
+.pixel--ojo {
+  animation: parpadeo-ojo 4.2s ease-in-out infinite;
+}
+
+@keyframes parpadeo-ojo {
+  0%,
+  92%,
+  100% {
+    filter: none;
+  }
+  95% {
+    filter: brightness(0.25);
+    transform: scaleY(0.35);
+  }
+}
+
+.pantalla-brillo {
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.16);
+  opacity: 0;
+  animation: brillo-pantalla 2.6s ease-in-out infinite;
+}
+
+@keyframes brillo-pantalla {
+  0%,
+  85%,
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pantalla-brillo,
+  .pixel--cuerpo,
+  .pixel--cuerpo.pixel--cabeza,
+  .pixel--ojo {
+    animation: none;
+  }
+}

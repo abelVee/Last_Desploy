@@ -11,6 +11,10 @@ import RelojPared from "./RelojPared";
 import MesaPlanta from "./MesaPlanta";
 import SprintBoard from "./Sprintboard";
 import Programadora from "./Programadora";
+import GatoProgramador from "./GatoProgramador";
+import PinguinoProgramador from "./PinguinoProgramador";
+import GatoSuelto from "./GatoSuelto";
+import PatoSuelto from "./PatoSuelto";
 
 const Escenario = () => {
   return (
@@ -46,29 +50,33 @@ const Escenario = () => {
           <Personaje />
         </div>
         <div className="puesto">
-          <Personaje variante="joven" />
-        </div>
-        <div className="puesto">
-          <EscritorioVacio />
-        </div>
-        <div className="puesto">
-          <Personaje variante="mujer-rubia" />
-        </div>
-
-        {/* Fila de abajo */}
-        <div className="puesto">
-          <Personaje variante="encapuchado" />
-        </div>
-        <div className="puesto">
-          <EscritorioVacio />
-        </div>
-        <div className="puesto">
           <Programadora />
         </div>
         <div className="puesto">
           <EscritorioVacio />
         </div>
+        <div className="puesto">
+          <GatoProgramador variante="negro" />
+        </div>
+
+        {/* Fila de abajo */}
+        <div className="puesto">
+          <EscritorioVacio />
+        </div>
+        <div className="puesto">
+          <PinguinoProgramador />
+        </div>
+        <div className="puesto">
+          <GatoProgramador />
+        </div>
+        <div className="puesto">
+          <EscritorioVacio />
+        </div>
       </div>
+
+      {/* Gato suelto: camina libremente por el piso, no ocupa un puesto */}
+      <GatoSuelto />
+      <PatoSuelto />
     </div>
   );
 };
