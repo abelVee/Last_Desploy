@@ -1,4 +1,3 @@
-import React from "react";
 import "./MaquinaExpendedora.css";
 
 // Paleta de colores de la máquina expendedora

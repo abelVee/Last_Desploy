@@ -1,4 +1,3 @@
-import React from "react";
 import "./MesaPlanta.css";
 
 // Paleta de colores de la mesa con planta y botella

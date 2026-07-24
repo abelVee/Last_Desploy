@@ -1,4 +1,3 @@
-import React from "react";
 import "./GatoSuelto.css";
 
 // Sprite grande (22 x 14), gato siamés de perfil caminando: orejas y
