@@ -1,4 +1,3 @@
-import React from "react";
 import "./Personaje.css";
 
 // Grid de 30 x 31 "pixeles". Cada carácter representa una parte del cuerpo

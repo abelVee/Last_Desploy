@@ -1,4 +1,3 @@
-import React from "react";
 import "./PinguinoProgramador.css";
 
 // Grid de 30 x 31 "pixeles". Mismo escritorio, monitor y silla que los

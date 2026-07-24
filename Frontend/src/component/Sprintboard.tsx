@@ -1,4 +1,3 @@
-import React from "react";
 import "./Sprintboard.css";
 
 // Paleta de colores del Sprint Board

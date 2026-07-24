@@ -1,4 +1,3 @@
-import React from "react";
 import "./RelojPared.css";
 
 // Paleta de colores de la esfera fija (sin la manecilla, que va aparte)

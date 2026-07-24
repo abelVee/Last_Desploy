@@ -1,4 +1,3 @@
-import React from "react";
 import "./escritorioVacio.css";
 
 // Paleta de colores del escritorio vacío

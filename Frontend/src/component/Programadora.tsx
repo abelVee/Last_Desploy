@@ -1,4 +1,3 @@
-import React from "react";
 import "./Programadora.css";
 
 // Grid de 30 x 31 "pixeles". Reusa el mismo escritorio, monitor y silla

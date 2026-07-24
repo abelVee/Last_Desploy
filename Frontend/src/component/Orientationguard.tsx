@@ -1,4 +1,3 @@
-import React from "react";
 import "./OrientationGuard.css";
 
 type Props = {

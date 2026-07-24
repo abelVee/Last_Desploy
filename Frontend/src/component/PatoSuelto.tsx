@@ -1,4 +1,3 @@
-import React from "react";
 import "./PatoSuelto.css";
 
 // Sprite chiquito (12 x 8), pato de perfil caminando/anadeando. El pico

@@ -1,4 +1,3 @@
-import React from "react";
 import "./VentanaCiudad.css";
 
 // Paleta de colores de la ventana con vista a la ciudad

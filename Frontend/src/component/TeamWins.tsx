@@ -1,4 +1,3 @@
-import React from "react";
 import "./TeamWins.css";
 
 // Paleta de colores del corcho "Team Wins"
