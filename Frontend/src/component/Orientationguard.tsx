@@ -1,4 +1,4 @@
-import "./OrientationGuard.css";
+import "./Orientationguard.css";
 
 type Props = {
   children: React.ReactNode;

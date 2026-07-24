@@ -1,4 +1,4 @@
-import "./escritorioVacio.css";
+import "./EscritorioVacio.css";
 
 // Paleta de colores del escritorio vacío
 const PALETTE: Record<string, string> = {
