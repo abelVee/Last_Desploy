@@ -57,6 +57,34 @@
   contain: layout style paint;
 }
 
+.oficina-celebrando .puesto {
+  animation: puesto-festejo 0.5s ease-in-out infinite;
+}
+
+.oficina-celebrando .puesto:nth-child(2n) {
+  animation-delay: 0.15s;
+}
+
+.oficina-celebrando .puesto:nth-child(3n) {
+  animation-delay: 0.3s;
+}
+
+@keyframes puesto-festejo {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8%) rotate(-3deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oficina-celebrando .puesto {
+    animation: none;
+  }
+}
+
+
 /* ---------- Responsive ---------- */
 
 /* Tablets / pantallas medianas: reducimos un poco el gap y el tope de tamaño

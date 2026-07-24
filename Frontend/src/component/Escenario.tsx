@@ -1,4 +1,5 @@
 // Escenario.tsx
+import { useState } from "react";
 import Personaje from "./Personaje";
 import fondoEscenario from "../assets/escenario.png";
 import "./Escenario.css";
@@ -15,18 +16,21 @@ import GatoProgramador from "./GatoProgramador";
 import PinguinoProgramador from "./PinguinoProgramador";
 import GatoSuelto from "./GatoSuelto";
 import PatoSuelto from "./PatoSuelto";
+import Donacion from "./Donacion";
+import MusicaFondo from "./MusicaFondo";
+import Agradecimiento from "./Agradecimiento";
 
 const Escenario = () => {
+  const [celebrando, setCelebrando] = useState(false);
+
   return (
     <div className="escenario-container">
-      {/* Capa de fondo */}
       <img
         src={fondoEscenario}
         alt="Escenario de trabajo"
         className="escenario-fondo"
       />
 
-      {/* Objetos superpuestos sobre el fondo */}
       <img
         src={PuertaSalida}
         alt="Puerta de salida"
@@ -42,10 +46,7 @@ const Escenario = () => {
         <SprintBoard />
       </div>
 
-      {/* Capa de personajes y escritorios, en grilla de 4 columnas x 2 filas
-          (en mobile pasa a 2 columnas x 4 filas, ver media query en el css) */}
-      <div className="oficina-grid">
-        {/* Fila de arriba: 4 personajes */}
+      <div className={`oficina-grid ${celebrando ? "oficina-celebrando" : ""}`}>
         <div className="puesto">
           <Personaje />
         </div>
@@ -59,7 +60,6 @@ const Escenario = () => {
           <GatoProgramador variante="negro" />
         </div>
 
-        {/* Fila de abajo */}
         <div className="puesto">
           <EscritorioVacio />
         </div>
@@ -74,9 +74,11 @@ const Escenario = () => {
         </div>
       </div>
 
-      {/* Gato suelto: camina libremente por el piso, no ocupa un puesto */}
       <GatoSuelto />
       <PatoSuelto />
+      <Donacion />
+      <MusicaFondo />
+      <Agradecimiento onCelebrar={setCelebrando} />
     </div>
   );
 };

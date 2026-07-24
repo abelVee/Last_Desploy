@@ -1,0 +1,46 @@
+.donacion-container {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.donacion-boton {
+  font-family: "Press Start 2P", "Courier New", monospace;
+  background-color: #ffd93d;
+  color: #2b2b2b;
+  border: none;
+  padding: 14px 20px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  image-rendering: pixelated;
+
+  /* Efecto de borde pixelado (estilo 8-bit) */
+  box-shadow:
+    inset -4px -4px 0px 0px #d4a017,
+    inset 4px 4px 0px 0px #fff2b0,
+    0 4px 0px 0px #8a6d00,
+    0 6px 6px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.08s steps(1), box-shadow 0.08s steps(1);
+}
+
+.donacion-boton:hover {
+  background-color: #ffe066;
+  transform: translateY(-2px);
+  box-shadow:
+    inset -4px -4px 0px 0px #d4a017,
+    inset 4px 4px 0px 0px #fff2b0,
+    0 6px 0px 0px #8a6d00,
+    0 8px 8px rgba(0, 0, 0, 0.4);
+}
+
+.donacion-boton:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset -4px -4px 0px 0px #d4a017,
+    inset 4px 4px 0px 0px #fff2b0,
+    0 2px 0px 0px #8a6d00,
+    0 3px 3px rgba(0, 0, 0, 0.3);
+}
